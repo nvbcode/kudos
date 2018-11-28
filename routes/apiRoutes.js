@@ -47,7 +47,6 @@ module.exports = function (app) {
 
     app.post('/api/user', function (req, res) {
         User.create(req.body)
-        .populate('kudos')
         .then(function (data) {
             res.json(data)
         }).catch(function (err) {

@@ -9,7 +9,15 @@ app.use(express.json());
 
 app.use(express.static('public'));
 
-mongoose.connect('mongodb://localhost/kudos', { useNewUrlParser: true});
+// if(process.env.MONGODB_URI) {
+//     mongoose.connect(process.env.MONGODB_URI);
+// } else {
+//     mongoose.connect("mongodb.")
+// }
+
+mongoose.Promise = global.Promise
+mongoose.connect( 
+    process.env.MONGODB_URI || 'mongodb://user:Password1@ds227821.mlab.com:27821/heroku_q5l0p65r', { useMongoClient: true});
 
 require('./routes/apiRoutes')(app);
 
