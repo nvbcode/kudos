@@ -37,7 +37,7 @@ module.exports = function (app) {
             return User.findOneAndUpdate({_id: req.body._id}, {$push: { kudos: kudoData._id} }, {new: true} );
         })
         .then(function(data) {
-            console.log(data), "updated user";
+            // console.log(data), "updated user";
             res.json(data);
         })
         .catch(function(err) {

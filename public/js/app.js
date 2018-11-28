@@ -5,14 +5,14 @@ $(document).ready(function () {
             // append data to page 
             console.log(`kudo data ${data}`);
             data.forEach(element => {
-                console.log(element);
+                // console.log(element);
                 $('#kudos').append(`
                 <div class = 'card'>
                         <h3>${element.title}</h3>
                         <h5> From: ${element.from}</h5>
                     <div class = 'card-body'>
                         <h4> To: ${element.to}</h5>
-                        <h6> Message:${element.message}</h5>
+                        <h6> Message: ${element.message}</h5>
                     </div>
                 </div>
                 `);
@@ -22,7 +22,7 @@ $(document).ready(function () {
 
     const getUsers = function () {
         $.get('/api/user', function (data) {
-            console.log(data);
+            // console.log(data);
             data.forEach(element => {
                 $('#kudo-from').append(`<option value='${element._id}'>${element.user}</option>`);
                 $('#kudo-to').append(`<option value='${element._id}'>${element.user}</option>`)
@@ -42,10 +42,10 @@ $(document).ready(function () {
 
         console.log(kudoData);
         $.post('/api/kudo', kudoData, function (res) {
-            console.log(res);
+            // console.log(res);
             console.log('successful post!');
         });
-
+    window.location.reload();
     };
 
     getKudos();
